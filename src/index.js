@@ -9,10 +9,11 @@ import "./css/main.css";
 import "./css/calendar.css";
 
 import axios from "axios";
+import LineChart from "./components/chart";
 
 const App = () => {
   const [inputValues, setInputValues] = useState({ value1: "", value2: "" });
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState({});
 
   const saveInputValues = (value1, value2) => {
     setInputValues({ value1: value1, value2: value2 });
@@ -32,6 +33,7 @@ const App = () => {
   return (
     <Container>
       <CalendarsForm saveInputValues={saveInputValues} />
+      <LineChart results={results} />
     </Container>
   );
 };
