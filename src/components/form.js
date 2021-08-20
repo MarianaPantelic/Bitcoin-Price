@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
-import { Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import Calendar from "react-input-calendar";
 
 const moment = require("moment");
@@ -17,14 +16,14 @@ const CalendarsForm = (props) => {
 
   console.log(value1, value2);
 
-  useEffect(() => {
+  const renderData = () => {
     props.saveInputValues(value1, value2);
-  }, [value1, value2]);
+  };
 
   return (
     <Form>
       <Row>
-        <Col lg={5} md={5} sm={5}>
+        <Col lg={4} md={4} sm={4}>
           <Calendar
             format="DD/MM/YYYY"
             date={beforeTenDays}
@@ -33,7 +32,7 @@ const CalendarsForm = (props) => {
             computableFormat={"DD.MM.YYYY"}
           />
         </Col>
-        <Col lg={5} md={5} sm={5}>
+        <Col lg={4} md={4} sm={4}>
           <Calendar
             format="DD/MM/YYYY"
             date={today}
@@ -41,6 +40,9 @@ const CalendarsForm = (props) => {
             value={value2}
             computableFormat={"DD.MM.YYYY"}
           />
+        </Col>
+        <Col lg={3} md={3} sm={3}>
+          <Button onClick={renderData}>Render</Button>
         </Col>
       </Row>
     </Form>
