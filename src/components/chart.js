@@ -17,11 +17,11 @@ const LineChart = (props) => {
     labels: dateResults,
     datasets: [
       {
-        label: "# of Votes",
+        label: "# Prices",
         data: priceResults,
         fill: false,
-        backgroundColor: "rgb(255, 99, 132)",
-        borderColor: "rgba(255, 99, 132, 0.2)",
+        backgroundColor: "darkblue",
+        borderColor: "blue",
       },
     ],
   };
@@ -40,10 +40,6 @@ const LineChart = (props) => {
 
   return (
     <div>
-      <div className="header">
-        <h1 className="title">Line Chart</h1>
-        <div className="links"></div>
-      </div>
       <Line data={data} options={options} />
     </div>
   );
