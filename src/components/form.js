@@ -5,11 +5,8 @@ import Calendar from "react-input-calendar";
 const moment = require("moment");
 
 const CalendarsForm = () => {
-  const [value, onChange] = useState(new Date());
-  /* var date = new Date();
-  var today =
-    date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
-  console.log(today); */
+  const [value1, onChange1] = useState(new Date());
+  const [value2, onChange2] = useState(new Date());
 
   const today = moment();
   console.log(today);
@@ -17,8 +14,7 @@ const CalendarsForm = () => {
   const beforeTenDays = moment().subtract(10, "days");
   console.log(beforeTenDays);
 
-  let x = moment(today - 10).format("YYYY-MM-DD");
-  console.log(x);
+  console.log(value1, value2);
 
   return (
     <Form>
@@ -27,8 +23,8 @@ const CalendarsForm = () => {
           <Calendar
             format="DD/MM/YYYY"
             date={beforeTenDays}
-            onChange={onChange}
-            value={value}
+            onChange={onChange1}
+            value={value1}
             computableFormat={"DD.MM.YYYY"}
           />
         </Col>
@@ -36,8 +32,8 @@ const CalendarsForm = () => {
           <Calendar
             format="DD/MM/YYYY"
             date={today}
-            onChange={onChange}
-            value={value}
+            onChange={onChange2}
+            value={value2}
             computableFormat={"DD.MM.YYYY"}
           />
         </Col>
