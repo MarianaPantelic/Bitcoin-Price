@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import Calendar from "react-input-calendar";
 
 const moment = require("moment");
 
-const CalendarsForm = () => {
+const CalendarsForm = (props) => {
   const [value1, onChange1] = useState(new Date());
   const [value2, onChange2] = useState(new Date());
 
@@ -15,6 +16,10 @@ const CalendarsForm = () => {
   console.log(beforeTenDays);
 
   console.log(value1, value2);
+
+  useEffect(() => {
+    props.saveInputValues(value1, value2);
+  }, [value1, value2]);
 
   return (
     <Form>
