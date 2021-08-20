@@ -17,7 +17,9 @@ const CalendarsForm = (props) => {
   console.log(value1, value2);
 
   const renderData = () => {
-    props.saveInputValues(value1, value2);
+    let formattedValue1 = moment(value1).format("YYYY-DD-MM");
+    let formattedValue2 = moment(value2).format("YYYY-DD-MM");
+    props.saveInputValues(formattedValue1, formattedValue2);
   };
 
   return (
