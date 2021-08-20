@@ -8,17 +8,17 @@ const LineChart = (props) => {
   let priceResults = [];
   if (props.results) {
     for (let i = 0; i < Object.keys(props.results).length; i++) {
-      dateResults.push(props.results[Object.keys(props.results)[i][0]]);
-      priceResults.push(props.results[Object.keys(props.results)[i][1]]);
+      dateResults.push(Object.keys(props.results)[i]);
+      priceResults.push(Object.values(props.results)[i]);
     }
   }
   console.log(dateResults, priceResults);
   const data = {
-    labels: ["1", "2", "3", "4", "5", "6"],
+    labels: dateResults,
     datasets: [
       {
         label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
+        data: priceResults,
         fill: false,
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgba(255, 99, 132, 0.2)",
