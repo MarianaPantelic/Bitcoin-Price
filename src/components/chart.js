@@ -2,8 +2,6 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 
 const LineChart = (props) => {
-  console.log(props.results);
-
   let dateResults = [];
   let priceResults = [];
   if (props.results) {
