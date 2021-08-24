@@ -11,3 +11,5 @@ This is a simple Fulstack Application to show Bitcoin prices in a desired period
 - Uses react-input-calendar npm to choose the desired dates.
 
 - Uses chartjs npm to display the prices in a chart.
+
+- You can find the backend application [here](https://github.com/MarianaPantelic/Bitcoin-Price-Backend)
