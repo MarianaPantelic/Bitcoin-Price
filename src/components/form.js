@@ -5,21 +5,11 @@ import Calendar from "react-input-calendar";
 const moment = require("moment");
 
 const CalendarsForm = (props) => {
-  const [value1, onChange1] = useState(new Date());
-  const [value2, onChange2] = useState(new Date());
+  const [value1, onChange1] = useState(props.beforeTenDays);
+  const [value2, onChange2] = useState(props.today);
 
-  const today = moment();
-  console.log(today);
-
-  const beforeTenDays = moment().subtract(10, "days");
-  console.log(beforeTenDays);
-
-  console.log(value1, value2);
-
-  const renderData = () => {
-    let formattedValue1 = moment(value1).format("YYYY-DD-MM");
-    let formattedValue2 = moment(value2).format("YYYY-DD-MM");
-    props.saveInputValues(formattedValue1, formattedValue2);
+  const renderData = (value1, value2) => {
+    props.saveInputValues(value1, value2);
   };
 
   return (
@@ -27,24 +17,32 @@ const CalendarsForm = (props) => {
       <Row>
         <Col lg={4} md={4} sm={4}>
           <Calendar
-            format="DD/MM/YYYY"
-            date={beforeTenDays}
+            format="YYYY-MM-DD"
+            date={props.beforeTenDays}
             onChange={onChange1}
             value={value1}
-            computableFormat={"DD.MM.YYYY"}
+            computableFormat={"YYYY-MM-DD"}
           />
         </Col>
         <Col lg={4} md={4} sm={4}>
           <Calendar
-            format="DD/MM/YYYY"
-            date={today}
+            format="YYYY-MM-DD"
+            date={props.today}
             onChange={onChange2}
             value={value2}
-            computableFormat={"DD.MM.YYYY"}
+            computableFormat={"YYYY-MM-DD"}
           />
         </Col>
         <Col lg={3} md={3} sm={3}>
-          <Button onClick={renderData}>Render</Button>
+          <Button onClick={() => renderData(value1, value2)}>Render</Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg={4} md={4} sm={4} className="text-center">
+          {moment(value1).format("YYYY-MM-DD")}
+        </Col>
+        <Col lg={4} md={4} sm={4} className="text-center">
+          {moment(value2).format("YYYY-MM-DD")}
         </Col>
       </Row>
     </Form>

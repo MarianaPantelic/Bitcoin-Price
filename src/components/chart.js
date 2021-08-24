@@ -1,16 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 
+const axios = require("axios").default;
+
 const LineChart = (props) => {
+  const [results, setResults] = useState({});
+
+  useEffect(() => {
+    getPrices();
+  }, [props.inputValues]);
+
+  const getPrices = async function () {
+    try {
+      await axios
+        .get(
+          `http://localhost:3001/prices?value1=${props.inputValues.value1}&value2=${props.inputValues.value2}`
+        )
+        .then((response) => {
+          setResults(response.data);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   let dateResults = [];
   let priceResults = [];
-  if (props.results) {
-    for (let i = 0; i < Object.keys(props.results).length; i++) {
-      dateResults.push(Object.keys(props.results)[i]);
-      priceResults.push(Object.values(props.results)[i]);
+  if (results) {
+    for (let i = 0; i < Object.keys(results).length; i++) {
+      dateResults.push(Object.keys(results)[i]);
+      priceResults.push(Object.values(results)[i]);
     }
   }
-  console.log(dateResults, priceResults);
+
   const data = {
     labels: dateResults,
     datasets: [

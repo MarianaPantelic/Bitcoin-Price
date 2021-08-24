@@ -1,6 +1,6 @@
 # Bitcoin-Price
 
-![Result](./public/BitcoinPrices.gif)
+![Result](../public/BitcoinPrices.gif)
 
 This is a simple Fulstack Application to show Bitcoin prices in a desired period of time.
 
